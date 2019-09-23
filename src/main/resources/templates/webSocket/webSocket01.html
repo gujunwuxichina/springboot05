@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input id="content"/><br/>
+    <button id="sendMsg">发送</button><br/>
+    <button id="close">主动关闭WebSocket</button>
+</div>
+<script>
+    let webSocket=null,
+        content=document.getElementById('content');
+    if('WebSocket' in window){
+        webSocket=new WebSocket('ws://192.168.1.19:8099/ws');
+    }else if('MozWebSocket' in window){
+        webSocket=new MozWebSocket('ws://192.168.1.19 :8099/ws');
+    }else{
+        alert('浏览器不支持webSocket');
+    }
+
+    //连接成功建立
+    webSocket.onopen=function(event){
+        console.log('success');
+    };
+
+    //错误
+    webSocket.onerror=function(){
+        console.log('error');
+    };
+
+    //接收到消息
+    webSocket.onmessage=function(event){
+        console.log(event.data);
+    };
+
+    webSocket.onclose=function(){
+        console.log('连接关闭');
+    };
+
+    //窗口关闭时，主动关闭webSocket
+    window.onbeforeunload=function () {
+        webSocket.close();
+    };
+
+    document.getElementById('close').addEventListener('click',function (event) {
+        console.log('关闭');
+        webSocket.close();
+    },false);
+
+    document.getElementById('sendMsg').addEventListener('click',function (event) {
+        let msg=content.value;
+        if(msg){
+            webSocket.send(msg);
+        }else{
+            alert('发送内容不能为空!');
+        }
+    },false);
+
+</script>
+</body>
+</html>
