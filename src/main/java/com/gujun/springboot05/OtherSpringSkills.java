@@ -27,9 +27,11 @@ public class OtherSpringSkills {
         1.ActiveMQ
         在Springboot配置文件中配置，Springboot就会根据配置文件初始化许多与ActiveMQ相关的对象，如JMS连接工厂
         连接池，JmsTemplate对象等；消息的发送和接收都可以通过JmsTemplate去处理；
-        对于接收消息，Spring提供了注解@JmsListener；
+        对于接收消息，Spring提供了注解@JmsListener进一步简化开发；
 
-        2.AMQP-RabbitMQ HHH
+        2.AMQP-RabbitMQ
+        Spring会根据配置内容，创建RabbitMQ相关的对象，如连接工厂、RabbitTemplate等；
+
 
      */
 
