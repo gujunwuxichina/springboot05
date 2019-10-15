@@ -29,9 +29,10 @@ public class OtherSpringSkills {
         连接池，JmsTemplate对象等；消息的发送和接收都可以通过JmsTemplate去处理；
         对于接收消息，Spring提供了注解@JmsListener进一步简化开发；
 
-        2.AMQP-RabbitMQ
+        2.AMQP-RabbitMQ 见springbootRabbitMQ01/02
         Spring会根据配置内容，创建RabbitMQ相关的对象，如连接工厂、RabbitTemplate等；
-
+        配置中publisher-confirms:true表示发送消息方可以监听发送消息到消息端是否成功，
+        如果成功则会根据设置的类进行回调；
 
      */
 

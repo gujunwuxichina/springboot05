@@ -4,7 +4,7 @@ server:
   port: 8099
 spring:
   application:
-    name:springboot05
+    name: springboot05
 
   datasource:
     # mysql
@@ -67,6 +67,7 @@ spring:
   activemq:
     #activeMQ地址
     broker-url: tcp://localhost:61616
+#    broker-url: tcp://192.168.1.8:61616
     user: admin
     password: admin
     pool:
@@ -84,21 +85,6 @@ spring:
     template:
       #默认目的地址
       default-destination: activemq.default.destination
-
-  #rabbitMQ
-  rabbitmq:
-    host: localhost
-    port: 15672
-    username: gujun
-    password: root
-    #是否确认发送的消息已被消费
-    publisher-confirms: true
-    #如下，自定义配置项
-    queue:
-      #rabbitMQ消息队列名称 ，由它发送字符串
-      msg: queue-msg
-      #rabbitMQ消息队列名称 ，由它发送用户对象
-      user: queue-user
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
